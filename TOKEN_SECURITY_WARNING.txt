@@ -1,0 +1,126 @@
+# ⚠️ URGENT: Bot Token Security
+
+## Your Token Was Exposed!
+
+The token you shared: `MTQ3NTEzNTkyNDQ5MjA0NjUyOA.GpnV5Y...` is **NO LONGER SAFE**.
+
+Anyone with this token can:
+- Control your bot
+- Access your server
+- Delete channels
+- Ban members
+- Steal data
+
+## 🚨 IMMEDIATE ACTION REQUIRED
+
+### Step 1: Regenerate Your Token
+
+1. Go to https://discord.com/developers/applications
+2. Click your application
+3. Go to **Bot** tab
+4. Click **"Reset Token"**
+5. Confirm
+6. Click **"Copy"** to get the NEW token
+
+### Step 2: Update Your Bot
+
+Replace the old token with the new one in your `.env`:
+
+```env
+DISCORD_TOKEN=your_new_token_here
+ALLOWED_GUILD_ID=your_guild_id_here
+DB_PATH=database/bot.db
+LAVALINK_URI=http://localhost:2333
+LAVALINK_PASSWORD=youshallnotpass
+```
+
+### Step 3: Secure Your Repository
+
+If your code is on GitHub/GitLab:
+1. Go to your repo settings
+2. Check Git history for exposed token
+3. Never commit `.env` to git
+4. Add `.env` to `.gitignore`
+
+```bash
+# Add to .gitignore
+echo ".env" >> .gitignore
+git rm --cached .env
+git add .gitignore
+git commit -m "Remove .env from tracking"
+```
+
+---
+
+## 🔐 Best Practices Going Forward
+
+### DO:
+✅ Keep your bot token in `.env` file (not in code)
+✅ Add `.env` to `.gitignore`
+✅ Use environment variables for secrets
+✅ Regenerate token if exposed
+✅ Use different tokens per environment (dev/prod)
+✅ Rotate tokens regularly
+
+### DON'T:
+❌ Share token in chat, GitHub, or anywhere public
+❌ Commit `.env` to version control
+❌ Post screenshots with token visible
+❌ Use same token in multiple places/servers
+❌ Share token via email/Slack
+
+---
+
+## 📋 Setup Checklist
+
+For Oracle Cloud permanent hosting:
+
+1. [ ] Regenerated bot token (old one is compromised)
+2. [ ] Updated `.env` with new token
+3. [ ] Created Oracle Cloud Always Free account
+4. [ ] Created compute instance (Ubuntu 22.04+)
+5. [ ] Downloaded SSH private key
+6. [ ] Connected to instance via SSH
+7. [ ] Uploaded bot files via SCP
+8. [ ] Ran oracle-cloud-setup.sh
+9. [ ] Started systemd service
+10. [ ] Verified bot is online in Discord
+
+---
+
+## 🖥️ Next Command to Run
+
+Once you have your **NEW token**, on your Oracle Cloud instance:
+
+```bash
+# Edit .env with your new token
+nano /home/ubuntu/dxc-bot/.env
+
+# Change:
+# DISCORD_TOKEN=your_new_token_here
+# ALLOWED_GUILD_ID=your_server_id_here
+
+# Save: Ctrl+X, then Y, then Enter
+
+# Restart bot
+sudo systemctl restart dxc-bot
+
+# Check status
+sudo systemctl status dxc-bot
+
+# View logs
+sudo journalctl -u dxc-bot -f
+```
+
+---
+
+## ✅ Verification
+
+Bot should appear online if setup correctly:
+1. Check Discord - bot should be online ✅
+2. Try a command: `/say hello`
+3. Check logs: `sudo journalctl -u dxc-bot -f`
+
+---
+
+**Security is critical. Please regenerate your token immediately.** 🔐
